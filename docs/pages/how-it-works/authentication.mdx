@@ -1,0 +1,17 @@
+# Authentication
+
+Next.js provides [API Routes](https://nextjs.org/docs/api-routes/introduction)
+which enable you to run code on the server-side.
+EVM Kit integrates [thirdweb Auth](https://portal.thirdweb.com/auth) on a
+[Dynamic "catch all" API route](https://nextjs.org/docs/api-routes/dynamic-api-routes) to implement
+`login`, `logout` and `user` endpoints that follow the
+[Sign-In with Ethereum standard](https://eips.ethereum.org/EIPS/eip-4361).
+
+This allows you to prove that a user owns a wallet
+address from within a server-side environment, enabling features such as:
+
+- Restricting access to specific pages based on a user&rsquo;s wallet information (e.g. NFT ownership).
+- Authenticating users with other services such as a database.
+- Accepting FIAT subscription payments and associating them with a user&rsquo;s wallet address.
+
+Within the project, the API route can be found at `/application/pages/api/auth/[...thirdweb].ts`

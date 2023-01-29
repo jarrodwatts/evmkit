@@ -1,0 +1,146 @@
+import { Callout } from "nextra-theme-docs";
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Started
+
+EVM Kit takes a few minutes to get up and running.
+
+<Callout emoji="👨🏼‍💻" type="info">
+  **Pre-requisites**: You need [Node.js](https://nodejs.org/en/download/),
+  [npm](https://www.npmjs.com/get-npm),
+  [Yarn](https://classic.yarnpkg.com/en/docs/install),
+  [Git](https://git-scm.com/downloads), and a browser wallet (e.g.
+  [Metamask](https://metamask.io/)).
+</Callout>
+
+Run the following command to clone the repository to your machine:
+
+```bash copy
+git clone https://github.com/jarrodwatts/evmkit
+```
+
+Change directories into the project:
+
+```bash copy
+cd evmkit
+```
+
+Open the project in [Visual Studio Code](https://code.visualstudio.com/).
+The repository comes with a set of [recommended extensions](/.vscode/extensions.json)
+for building web3 apps; when you open the project, VS Code will prompt you to install them.
+
+## Terminal Setup
+
+The recommended way to use this project is to open **three** terminals simultaneously:
+
+1. Runs the local node to deploy your smart contracts to
+2. Is free to use for things like deploying smart contracts, running tests, git, yarn, etc.
+3. Runs the frontend application
+
+### Terminal One: Local Node
+
+Terminal one essentially mimics the behavior of an EVM blockchain on your
+local machine using [Hardhat](https://hardhat.org/).
+
+> Hardhat comes built-in with Hardhat Network, a local Ethereum network node designed for development.
+> It allows you to deploy your contracts, run your tests and debug your code,
+> all within the confines of your local machine.
+
+To set this, up run the following commands:
+
+```bash
+cd contracts      # Change directories into the contracts folder
+yarn              # Install dependencies (only required the first time you set up the project)
+yarn run-node     # Start the local node
+```
+
+This will print the following output:
+
+```bash
+Started HTTP and WebSocket JSON-RPC server at http://127.0.0.1:8545/
+
+Accounts
+========
+
+WARNING: These accounts, and their private keys, are publicly known.
+Any funds sent to them on Mainnet or any other live network WILL BE LOST.
+
+Account 0: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 (10000 ETH)
+Private Key: 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+```
+
+These wallets are publicly known and contain test funds for you to interact with your smart contracts
+from your browser wallet.
+[Learn how to import a Metamask account](https://metamask.zendesk.com/hc/en-us/articles/360015489331-How-to-import-an-account).
+
+<Callout type="error">
+  Never send real funds to these accounts! They are **not** unique to you.
+</Callout>
+
+Leave this terminal running in the background.
+
+### Terminal Two: Miscellaneous
+
+The second terminal is free to use for things like deploying smart contracts, running tests, git, yarn, etc.
+
+To set up the project, we&rsquo;ll use it to deploy the smart contracts to the local node.
+
+Run the following commands:
+
+```bash
+cd contracts          # Change directories into the contracts folder
+yarn deploy-local     # Deploy the smart contracts to the local node
+```
+
+This command uses a [Hardhat script](https://hardhat.org/guides/scripts.html)
+to deploy the smart contracts to the local node, and update the frontend application
+with the addresses and ABIs of the deployed contracts automatically.
+
+Each time you make a change to your smart contracts,
+you can run this command to redeploy them to the local node and
+update the frontend application.
+
+Some other useful commands you can run in this terminal:
+
+```bash
+yarn build           # Compile the smart contracts and detect what features are implemented
+yarn test            # Run the smart contract test suite
+```
+
+### Terminal Three: Frontend
+
+Terminal three runs the frontend of your application using [Next.js's CLI](https://nextjs.org/docs/api-reference/cli).
+
+Run the following commands:
+
+```bash
+cd application          # Change directories into the application folder
+yarn                    # Install dependencies (only required the first time you set up the project)
+yarn dev                # Start the frontend application
+```
+
+Visit http://localhost:3000 in your browser to see the application running.
+
+> `next dev` starts the application in development mode with hot-code reloading, error reporting, and more:
+> The application will start at http://localhost:3000 by default. The default port can be changed with -p
+
+Leave this terminal running in the background.
+
+## Add a burner private key
+
+<Callout type="info">
+  This step is only required if you want to use Sign in with Ethereum.
+</Callout>
+
+To authenticate users using Sign in with Ethereum, you need a private key in your environment.
+
+**Use a burner wallet. NOT your main wallet. The account does not need any funds.**
+
+1. Create a file called `.env.local` at the root of the `application` folder.
+2. Populate it as follows _(replace `xyz` with your PK)_: `ADMIN_PRIVATE_KEY=xyz`
+
+## Next Steps
+
+That&rsquo;s it! You&rsquo;re ready to start working with EVM Kit.
+
+Next, we&rsquo;ll walk you through the different pieces of the project.

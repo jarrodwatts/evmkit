@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "naumovs.color-highlight", // Highlight CSS color codes in your editor
+    "irongeek.vscode-env", // Syntax highlighting for .env files
+    "dsznajder.es7-react-js-snippets", // Generate boilerplate code for React
+    "dbaeumer.vscode-eslint", // ESLint statically analyzes your code to quickly find problems
+    "wix.vscode-import-cost", // Display import/require package size in the editor
+    "visualstudioexptteam.vscodeintellicode", // Intelligent autocomplete suggestions
+    "esbenp.prettier-vscode", // Autoamtic consistent code formatting
+    "nomicfoundation.hardhat-solidity", // Solidity syntax highlighting
+    "github.copilot" // Paid Extension: AI Code Completions
+  ]
+}

@@ -1,0 +1,21 @@
+.skeleton {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  background-size: 400%;
+  animation: loading 2s infinite linear;
+  box-shadow: 0 0 0 1px hsl(0deg 0% 100% / 10%);
+  border-radius: 4px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -400% 0;
+  }
+}

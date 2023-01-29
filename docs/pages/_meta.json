@@ -1,0 +1,15 @@
+{
+  "index": "Introduction",
+  "why": "Why EVM Kit?",
+  "getting-started": "Getting Started",
+  "how-it-works": {
+    "title": "How It Works"
+  },
+  "production": "Going to Production",
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "href": "https://twitter.com/jarrodwattsdev",
+    "newWindow": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  // Set formatter for solidity
+  "[solidity]": {
+    // hardhat solidity extension
+    "editor.defaultFormatter": "NomicFoundation.hardhat-solidity"
+  },
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
