@@ -33,7 +33,7 @@ _Please see the [pre-requisites](#pre-requisites) section below for the tools yo
 First, clone this repository:
 
 ```bash
-git clone https://github.com/jarrodwatts/evm-kit
+npx evmkit@latest create my-evmkit-app
 ```
 
 Change directories into the project:
