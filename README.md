@@ -46,11 +46,11 @@ Open the project in Visual Studio Code.
 
 ### Install Recommended Extensions
 
-This project comes with my [recommended extensions](/.vscode/extensions.json) for building web3 apps in VS Code.
+This project comes with my [recommended extensions](/template/.vscode/extensions.json) for building web3 apps in VS Code.
 
 When you open the project, VS Code will prompt you to install them. It is recommended that you do so.
 
-There is also a [settings file](/.vscode/settings.json) that comes with VS Code configuration that auto-formats your code every time you save.
+There is also a [settings file](/template/.vscode/settings.json) that comes with VS Code configuration that auto-formats your code every time you save.
 
 <br/>
 
@@ -63,7 +63,7 @@ To authenticate users using Sign in with Ethereum, you need a private key.
 1. Create a file called `.env.local` at the root of the `application` folder.
 2. Populate it like so: `ADMIN_PRIVATE_KEY=xxx`
 
-Please see the [.env.example](/application/.env.example) file if you get stuck.
+Please see the [.env.example](/template/application/.env.example) file if you get stuck.
 
 <br/>
 
@@ -71,7 +71,7 @@ Please see the [.env.example](/application/.env.example) file if you get stuck.
 
 The recommended way to use this repository is to run three terminals simultaneously, like so:
 
-![Terminal Setup](/readme_assets/terminals.png)
+![Terminal Setup](/template/readme_assets/terminals.png)
 
 **Terminal One**:
 Runs your application (front end).
@@ -98,7 +98,7 @@ The local node prints out 20 accounts with private keys. Import one of these acc
 Deploys your smart contracts to the local node and updates your frontend.
 
 - `cd contracts`
-- `yarn deploy-local` (Runs the [deploy script](/contracts/scripts/deploy.ts))
+- `yarn deploy-local` (Runs the [deploy script](/template/contracts/scripts/deploy.ts))
 
   Use this terminal for various other commands like `yarn` and `git`.
 
@@ -109,7 +109,7 @@ Deploys your smart contracts to the local node and updates your frontend.
 When you&rsquo;re ready to deploy your smart contracts and [GTFOL](https://www.urbandictionary.com/define.php?term=GTFOL), all you need to do is:
 
 1. Deploy your smart contract(s).
-2. Add your contract addresses and network to the [contractAddresses.ts](/application/const/contractAddresses.ts) file.
+2. Add your contract addresses and network to the [contractAddresses.ts](/template/application/const/contractAddresses.ts) file.
 3. Deploy your application to Vercel.
 
 Further details below:
@@ -120,11 +120,11 @@ From the `contracts` directory, run `yarn deploy` to compile and deploy your sma
 
 Once deployed, copy each of your smart contract addresses from the dashboard _(outlined below)_:
 
-![Dashboard](/readme_assets/copy-address.png)
+![Dashboard](/template/readme_assets/copy-address.png)
 
 ### Adding Contract Addresses to Application
 
-Inside the [contractAddresses.ts](/application/const/contractAddresses.ts) file, there is a placeholder for you to put the deployed contract address for each contract you have created.
+Inside the [contractAddresses.ts](/template/application/const/contractAddresses.ts) file, there is a placeholder for you to put the deployed contract address for each contract you have created.
 
 ```diff
 export const internalContractAddresses = {
@@ -147,7 +147,7 @@ export const internalContractAddresses = {
 
 ### Setting Production Network
 
-In the same [contractAddresses.ts](/application/const/contractAddresses.ts) file, ensure you set the production network you want to use.
+In the same [contractAddresses.ts](/template/application/const/contractAddresses.ts) file, ensure you set the production network you want to use.
 
 _For example, if you want to deploy to Ethereum mainnet, change the following lines:_
 
@@ -178,7 +178,7 @@ Deploy your application:
 vercel
 ```
 
-The logic inside the [contractAddresses.ts](/application/const/contractAddresses.ts) file automatically uses your production network and contract addresses on your deployed application, while using your development network and contract addresses on your local development environment.
+The logic inside the [contractAddresses.ts](/template/application/const/contractAddresses.ts) file automatically uses your production network and contract addresses on your deployed application, while using your development network and contract addresses on your local development environment.
 
 <br/>
 
@@ -188,12 +188,12 @@ The general development workflow of this repository is:
 
 1. Set up your terminal windows to run both your application and local node with your smart contracts.
 2. Make changes to your smart contracts.
-3. Run `yarn deploy-local` in your third terminal to deploy your smart contracts to your local node. This command automatically updates your frontend with the new contract addresses inside the [contractAddresses.ts](/application/const/contractAddresses.ts) file.
+3. Run `yarn deploy-local` in your third terminal to deploy your smart contracts to your local node. This command automatically updates your frontend with the new contract addresses inside the [contractAddresses.ts](/template/application/const/contractAddresses.ts) file.
 
 4. Work with the latest version of your smart contracts in your application.
 5. Repeat steps 2-4 until you are happy with your changes.
 6. Run `yarn deploy` to deploy your smart contracts to a test network or mainnet.
-7. Update your [contractAddresses.ts](/application/const/contractAddresses.ts) file with the new contract addresses manually.
+7. Update your [contractAddresses.ts](/template/application/const/contractAddresses.ts) file with the new contract addresses manually.
 8. Deploy your application to Vercel.
 
 ## Common Issues
