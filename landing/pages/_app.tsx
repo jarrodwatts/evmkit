@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title></title>
+        <title>EVM Kit</title>
         <meta
           name="description"
           content="A starter kit for building full-stack web3 applications."
