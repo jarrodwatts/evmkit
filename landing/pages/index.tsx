@@ -1,39 +1,19 @@
-import { useState } from "react";
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
-import Contracts from "../components/DemoComponents/Contracts";
-import Auth from "../components/DemoComponents/Auth";
-import Storage from "../components/DemoComponents/Storage";
-import Events from "../components/DemoComponents/Events";
-import SDK from "../components/DemoComponents/SDK";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 const Home: NextPage = () => {
-  const tabs = [
-    {
-      title: "Build & Deploy Smart Contracts to EVM",
-      component: <Contracts />,
-    },
-    {
-      title: "Interact with Smart Contracts in React",
-      component: <SDK />,
-    },
-    {
-      title: "Sign in with Ethereum to authenticate users",
-      component: <Auth />,
-    },
-    {
-      title: "Network with and render IPFS data",
-      component: <Storage />,
-    },
-    {
-      title: "Listen for contract events in real time",
-      component: <Events />,
-    },
-  ];
+  const [icon, setIcon] = useState("/copy-icon.png");
 
-  const [activeTab, setActiveTab] = useState<number | null>(null);
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText("npx evmkit create my-evmkit-app");
+    setIcon("/check-icon.png");
+    setTimeout(() => {
+      setIcon("/copy-icon.png");
+    }, 1000);
+  };
 
   return (
     <div className={styles.container}>
@@ -71,10 +51,22 @@ const Home: NextPage = () => {
                 faster than ever
               </h1>
               <p className={styles.heroSubtitle}>
-                EVM Kit is the best way to build full-stack web3 applications on
-                any EVM network.
+                EVM Kit is the best way to build full-stack, type-safe web3
+                applications on any EVM-compatible network.
               </p>
+              <button className={styles.codeButton} onClick={copyToClipboard}>
+                <p>npx evmkit create my-evmkit-app</p>
+                <Image
+                  src={icon}
+                  alt="Copy"
+                  height={16}
+                  width={16}
+                  className={styles.codeButtonCopy}
+                />
+              </button>
+
               <div className={styles.heroCtaContainer}>
+                {/* Button in the style of code */}
                 <Link
                   className={styles.heroCta}
                   href="https://docs.evmkit.com/"
