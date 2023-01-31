@@ -31,7 +31,7 @@ const Home: NextPage = () => {
               />
             </div>
           </div>
-          <div className={styles.heroRaycastFrame}>
+          <div className={styles.heroAssetFrame}>
             <Image
               src="/wtf.png"
               width={819}

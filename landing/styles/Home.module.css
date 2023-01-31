@@ -54,7 +54,7 @@
   opacity: 0.76;
 }
 
-.heroRaycastFrame {
+.heroAssetFrame {
   display: flex;
   justify-content: center;
   margin: 96px auto 0;
