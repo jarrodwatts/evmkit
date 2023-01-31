@@ -1,7 +1,5 @@
 # EVM Kit
 
-👷🚧 **Under construction: this is a work in progress!** 🚧👷
-
 The best way to start a full-stack type-safe web3 project.
 
 [Video](https://www.youtube.com/channel/UCJae_agpt9S3qwWNED0KHcQ) coming soon!
