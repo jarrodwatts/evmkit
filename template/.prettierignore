@@ -1,2 +1,2 @@
 # Don't auto-format the generated file
-application/const/contractAddresses.ts
+template/application/const/contractAddresses.ts

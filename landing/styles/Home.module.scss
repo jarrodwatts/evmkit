@@ -11,6 +11,7 @@
   background-color: #05020c;
   text-align: center;
   max-width: 100vw;
+  padding-bottom: 256px;
 }
 
 .content {
@@ -21,7 +22,7 @@
 }
 
 .hero {
-  padding-bottom: 128px;
+  padding-bottom: 256px;
 }
 
 .heroBackground {
@@ -81,7 +82,6 @@
 }
 
 .heroTitle {
-  letter-spacing: 1.2px;
   margin-top: clamp(-30px, calc(-7vw + 57px), 5px);
   margin-bottom: 20px;
   color: #fff;
@@ -91,6 +91,7 @@
   letter-spacing: 1.2px;
   text-align: center;
   overflow: visible;
+  letter-spacing: -0.06em;
 }
 
 .heroTitleGradient {
@@ -180,7 +181,7 @@
   font-weight: 500;
   letter-spacing: 0.2px;
   line-height: 20px;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease-in-out;
   width: 280px;
 }
 
@@ -206,7 +207,8 @@
 }
 
 .heroCta:hover {
-  background-color: hsla(0, 0%, 100%, 0.1);
+  cursor: pointer;
+  background-color: hsla(0, 0%, 100%, 0.7);
 }
 
 .secondaryCta {
@@ -303,6 +305,144 @@
   margin-bottom: 1em;
 }
 
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  text-align: start;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 128px;
+}
+
+.sectionLeft {
+  width: 50%;
+  padding-right: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionRight {
+  width: 50%;
+  padding-left: 2em;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionImage {
+  aspect-ratio: 1759 / 792;
+  border-radius: 8px;
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.5);
+  margin-top: 16px;
+}
+
+.toolImageContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+/* Carousel */
+.carouselSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 128px;
+}
+
+@mixin white-gradient {
+  background: linear-gradient(
+    to right,
+    #05020c 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+$animationSpeed: 20s;
+
+// Animation
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+// Styling
+.slider {
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 960px;
+  margin-bottom: 64px;
+  margin-top: 48px;
+
+  &::before,
+  &::after {
+    @include white-gradient;
+    content: "";
+    height: 100px;
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+  }
+
+  &::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+  }
+
+  &::before {
+    left: 0;
+    top: 0;
+  }
+
+  .slideTrack {
+    animation: scroll $animationSpeed linear infinite;
+    display: flex;
+    width: calc(250px * 14);
+  }
+
+  .slide {
+    height: 100px;
+    width: 250px;
+  }
+}
+
+.imageCaption {
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 48px;
+  letter-spacing: 1.2px;
+  text-shadow: 0 0 80px rgb(192 219 255 / 48%), 0 0 32px rgb(65 120 255 / 24%);
+  margin-bottom: 8px;
+}
+
+.sectionDescription {
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin-top: 1em;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 720px;
+}
+
 /* Screens smaller than 750px */
 @media (max-width: 750px) {
   .tabs {
@@ -338,6 +478,10 @@
   .heroAsset {
     max-height: 240px;
   }
+
+  .sectionImage {
+    height: 200px !important;
+  }
 }
 
 /* Above 640 and less than 960 */
@@ -353,5 +497,40 @@
 
   .heroAsset {
     max-height: 300px;
+  }
+
+  .sectionImage {
+    height: 320px !important;
+  }
+}
+
+/* Less than 1070 */
+@media (max-width: 1070px) {
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .sectionDescription {
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .sectionLeft {
+    width: 100%;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .sectionRight {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .sectionImage {
+    height: 345px;
   }
 }

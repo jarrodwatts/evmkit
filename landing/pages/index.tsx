@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -84,6 +84,122 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className={styles.carouselSection}>
+          <h2 className={styles.sectionTitle}>
+            Compatible with all EVM Networks
+          </h2>
+          <p className={styles.sectionDescription}>
+            Deploy your smart contracts to any EVM-compatible network with a
+            single command. <b>No private keys required</b>.{" "}
+            <em>Literally, just type 11 characters...</em>
+          </p>
+          <div className={styles.slider}>
+            <div className={styles.slideTrack}>
+              {[
+                "ethereum",
+                "polygon",
+                "arbitrum",
+                "optimism",
+                "avax",
+                "fantom",
+                "binance",
+                "celo",
+                "zksync",
+                "cronos",
+                "filecoin",
+                "klaytn",
+                "evmos",
+                "dogechain",
+              ].map((chain) => {
+                return (
+                  <div className={styles.slide} key={chain}>
+                    <Image
+                      src={`/chains/${chain}.png`}
+                      height={96}
+                      width={96}
+                      alt={chain}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.section}>
+          <div className={styles.sectionLeft}>
+            <h2 className={styles.sectionTitle}>Typesafe End-to-end</h2>
+            <p className={styles.sectionDescription}>
+              EVM Kit uses TypeScript across the stack to provide a seamless
+              developer experience. It infers types from your smart contract
+              ABIs to provide typesafety, powered by
+              <Link
+                href="https://github.com/wagmi-dev/abitype"
+                target="_blank"
+                className={styles.link}
+              >
+                ABIType
+              </Link>
+              . <em>Pretty cool right?</em>
+            </p>
+            <p className={styles.sectionDescription}>
+              From the smart contract environment to the frontend, you can be
+              confident that your code is <s>poggers</s>,{" "}
+              <em>ahem, typesafe</em>.
+            </p>
+          </div>
+          <div className={styles.sectionRight}>
+            <Image
+              src="/deploy-local-preview.gif"
+              width={720}
+              height={246}
+              alt="deploy local preview gif"
+              className={styles.sectionImage}
+            />
+            <p className={styles.imageCaption}>
+              <span className={styles.code}>yarn deploy-local</span>{" "}
+              automatically adds your ABIs to your frontend config.
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.carouselSection}>
+          <h2 className={styles.sectionTitle}>The best tools in web3</h2>
+          <p className={styles.sectionDescription}>
+            Start with the foundation.
+          </p>
+
+          <div className={styles.toolImageContainer}>
+            {["solidity", "hardhat", "openzeppelin", "thirdweb", "nextjs"].map(
+              (tool) => {
+                return (
+                  <Image
+                    src={`/tools/${tool}.png`}
+                    height={tool === "thirdweb" ? 86 : 128}
+                    width={128}
+                    alt={tool}
+                    key={tool}
+                  />
+                );
+              }
+            )}
+          </div>
+
+          <p className={styles.sectionDescription}>
+            Add what you need, when you need it.
+          </p>
+          <div className={styles.toolImageContainer}>
+            <Image
+              src="/tools/wagmi.png"
+              width={128}
+              height={128}
+              alt="Background gradient"
+              quality={100}
+            />
+          </div>
+          <div className={styles.toolImageContainer}></div>
         </div>
       </div>
     </div>
