@@ -177,8 +177,8 @@ const Home: NextPage = () => {
                 return (
                   <Image
                     src={`/tools/${tool}.png`}
-                    height={tool === "thirdweb" ? 86 : 128}
-                    width={128}
+                    height={tool === "thirdweb" ? 64 : 96}
+                    width={96}
                     alt={tool}
                     key={tool}
                   />
@@ -191,13 +191,16 @@ const Home: NextPage = () => {
             Add what you need, when you need it.
           </p>
           <div className={styles.toolImageContainer}>
-            <Image
-              src="/tools/wagmi.png"
-              width={128}
-              height={128}
-              alt="Background gradient"
-              quality={100}
-            />
+            {["wagmi", "rainbowkit", "alchemy", "tailwind"].map((tool) => (
+              <Image
+                src={`/tools/${tool}.png`}
+                height={96}
+                width={tool === "wagmi" ? 136 : 96}
+                alt={tool}
+                key={tool}
+                className={styles.toolImage}
+              />
+            ))}
           </div>
           <div className={styles.toolImageContainer}></div>
         </div>
