@@ -81,6 +81,7 @@
 }
 
 .heroTitle {
+  letter-spacing: 1.2px;
   margin-top: clamp(-30px, calc(-7vw + 57px), 5px);
   margin-bottom: 20px;
   color: #fff;
