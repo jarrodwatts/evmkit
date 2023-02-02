@@ -360,7 +360,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-left: 8px;
+  padding-right: 8px;
   padding-bottom: 128px;
+}
+
+.communityContainer {
+  gap: 16px;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 @mixin white-gradient {
@@ -462,6 +472,16 @@ $animationSpeed: 20s;
   }
 
   .heroTitle {
+  }
+
+  .toolImageContainer {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .toolImage {
+    max-width: 64px;
+    max-height: 64px;
   }
 }
 

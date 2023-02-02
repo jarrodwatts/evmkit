@@ -44,8 +44,8 @@ export function Nav() {
           >
             <Image
               src="/twitter.png"
-              width={24}
-              height={24}
+              width={18}
+              height={18}
               alt="Twitter icon"
             />
           </Link>

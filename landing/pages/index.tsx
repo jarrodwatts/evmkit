@@ -181,6 +181,7 @@ const Home: NextPage = () => {
                     width={96}
                     alt={tool}
                     key={tool}
+                    className={styles.toolImage}
                   />
                 );
               }
@@ -202,7 +203,52 @@ const Home: NextPage = () => {
               />
             ))}
           </div>
-          <div className={styles.toolImageContainer}></div>
+        </div>
+
+        <div className={styles.carouselSection}>
+          <h2 className={styles.sectionTitle}>Join the Community</h2>
+          <p className={styles.sectionDescription}>
+            You&rsquo; are not alone in this journey. Join the community to get
+            help, share your projects, and meet other developers.
+          </p>
+          <div className={styles.communityContainer}>
+            <Link
+              href="https://github.com/jarrodwatts/evmkit"
+              target="_blank"
+              className={styles.link}
+            >
+              <Image
+                src="/github.png"
+                width={48}
+                height={48}
+                alt="Github icon"
+              />
+            </Link>
+            <Link
+              href="https://twitter.com/jarrodwattsdev"
+              target="_blank"
+              className={styles.link}
+            >
+              <Image
+                src="/twitter.png"
+                width={36}
+                height={36}
+                alt="Twitter icon"
+              />
+            </Link>
+            <Link
+              href="https://discord.com/invite/4eQBm7DDNS"
+              target="_blank"
+              className={styles.link}
+            >
+              <Image
+                src="/discord.png"
+                width={48}
+                height={48}
+                alt="Discord icon"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
