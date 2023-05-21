@@ -1,0 +1,63 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Program Files\Oculus\Support\oculus-runtime;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\User\AppData\Local\Microsoft\WindowsApps;C:\Users\User\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\User\AppData\Roaming\npm;C:\Program Files\Git\cmd;C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\PATH_PROGRAMS;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\User\AppData\Roaming\.dotnet;C:\Users\User\AppData\Local\pnpm;C:\Users\User\.cargo\bin;C:\Users\User\scoop\shims;C:\Users\User\.poetry\bin;C:\Users\User\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\User\AppData\Local\Programs\Python\Python39\;C:\Users\User\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\User\.dotnet\tools
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.15.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile 'C:\Users\User\AppData\Local\Yarn\Cache\v6\npm-jsonfile-6.1.0-bc55b2634793c679ec6403094eb13698a6ec0aae-integrity\node_modules\jsonfile\LICENSE' -> 'C:\dev\evmkit\template\contracts\node_modules\@typechain\hardhat\node_modules\jsonfile\LICENSE'
+
+npm manifest: 
+  {
+    "name": "contracts",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+      "test": "npx hardhat test",
+      "build": "npx thirdweb@latest build",
+      "node": "npx hardhat node",
+      "deploy": "npx thirdweb@latest deploy"
+    },
+    "dependencies": {
+      "@openzeppelin/contracts": "^4",
+      "@thirdweb-dev/contracts": "^3"
+    },
+    "devDependencies": {
+      "@ethersproject/abi": "^5.4.7",
+      "@ethersproject/providers": "^5.4.7",
+      "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",
+      "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+      "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+      "@nomiclabs/hardhat-ethers": "^2.0.0",
+      "@nomiclabs/hardhat-etherscan": "^3.0.0",
+      "@typechain/ethers-v5": "^10.1.0",
+      "@typechain/hardhat": "^6.1.2",
+      "@types/chai": "^4.2.0",
+      "@types/mocha": ">=9.1.0",
+      "@types/node": ">=12.0.0",
+      "chai": "^4.2.0",
+      "ethers": "^5.4.7",
+      "hardhat": "^2.11.1",
+      "hardhat-gas-reporter": "^1.0.8",
+      "solidity-coverage": "^0.8.0",
+      "ts-node": ">=8.0.0",
+      "typechain": "^8.1.0",
+      "typescript": ">=4.5.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

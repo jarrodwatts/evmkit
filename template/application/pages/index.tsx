@@ -1,89 +1,73 @@
-import { useState } from "react";
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
-import Contracts from "../components/DemoComponents/Contracts";
-import Auth from "../components/DemoComponents/Auth";
-import Storage from "../components/DemoComponents/Storage";
-import Events from "../components/DemoComponents/Events";
-import SDK from "../components/DemoComponents/SDK";
+import { useState } from "react";
 import Link from "next/link";
+import { buttonVariants } from "@/components/button";
+import WalletConnection from "@/components/demo/WalletConnection";
+
+const tabs = [
+  { name: "Wallet Connection", component: <WalletConnection /> },
+  { name: "Contract Interaction", component: null },
+  { name: "User Authentication", component: null },
+  { name: "Decentralized Storage", component: null },
+  { name: "Realtime Events", component: null },
+];
 
 const Home: NextPage = () => {
-  const tabs = [
-    {
-      title: "Build & Deploy Smart Contracts to EVM",
-      component: <Contracts />,
-    },
-    {
-      title: "Interact with Smart Contracts in React",
-      component: <SDK />,
-    },
-    {
-      title: "Sign in with Ethereum to authenticate users",
-      component: <Auth />,
-    },
-    {
-      title: "Network with and render IPFS data",
-      component: <Storage />,
-    },
-    {
-      title: "Listen for contract events in real time",
-      component: <Events />,
-    },
-  ];
-
-  const [activeTab, setActiveTab] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>(tabs[0]);
 
   return (
-    <div className="container">
-      <main>
-        <h1 className={styles.title}>
-          Build the future of the decentralized web.
-        </h1>
-        <p className={styles.caption}>
-          EVM Kit is the best way to build a full-stack, type-safe web3 project.
-        </p>
-        <p className={styles.caption}>
-          <b> Recommended:</b> Watch the{" "}
-          <Link
-            className={styles.link}
-            href="https://www.youtube.com/TODO"
-            target="_blank"
-          >
-            YouTube video
-          </Link>{" "}
-          to get started.
-        </p>
+    <div className="w-full mx-auto pr-8 pl-8 max-w-7xl relative pb-10 mt-32">
+      <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
+        EVM Kit
+      </h1>
+      <p className="text-xl text-muted-foreground">
+        A collection of tools for Ethereum Virtual Machine (EVM) development.
+      </p>
+      <div className="flex flex-row items-center gap-4 pt-6 pb-16 border-b">
+        <Link
+          className={buttonVariants({ variant: "default" })}
+          href="https://docs.evmkit.com"
+          target="_blank"
+        >
+          Get Started
+        </Link>
 
-        <section className={styles.content}>
-          <h2 className={styles.subtitle} style={{ marginTop: 64 }}>
-            Explore the codebase:
-          </h2>
+        <Link
+          className={buttonVariants({ variant: "secondary" })}
+          href="https://github.com/jarrodwatts/evmkit"
+          target="_blank"
+        >
+          GitHub
+        </Link>
+      </div>
+      <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors mt-8">
+        What&rsquo;s Included?
+      </h2>
+      <p className="leading-7 mt-2">
+        Explore the available features of EVM Kit below.
+      </p>
 
-          <p className={styles.caption}>
-            Select a tab below to learn more about the codebase and what&apos;s
-            possible.
-          </p>
+      <div className="flex flex-row pt-6 ">
+        <div className="mb-4 flex flex-col items-start mt-4 flex-wrap w-60">
+          {tabs.map((tab) => (
+            <button
+              className={`text-left pl-3  py-2 flex items-center pr-6 font-medium transition-colors duration-200 ${
+                tab.name === activeTab.name
+                  ? "font-bold text-white border-l-2 border-blue-500"
+                  : "text-gray-400 border-l-2 border-gray-700"
+              } hover:text-white`}
+              key={tab.name}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab.name}
+            </button>
+          ))}
+        </div>
 
-          {/* Tabs - todo, shouldn't be divs */}
-          <div className={styles.tabs}>
-            {tabs.map((tab, index) => (
-              <div
-                onClick={() => setActiveTab(index)}
-                className={`${styles.tab} ${
-                  activeTab === tabs.indexOf(tab) ? styles.activeTab : ""
-                }`}
-                key={tab.title}
-              >
-                <p>{tab.title}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Render selected tab component */}
-          <div>{activeTab !== null ? tabs[activeTab].component : null}</div>
-        </section>
-      </main>
+        <div className="border border-gray-700 rounded-lg flex-1 p-8 m-l-3">
+          {activeTab.component}
+        </div>
+      </div>
     </div>
   );
 };

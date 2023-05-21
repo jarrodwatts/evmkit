@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "bradlc.vscode-tailwindcss", // Tailwind CSS IntelliSense
     "naumovs.color-highlight", // Highlight CSS color codes in your editor
     "irongeek.vscode-env", // Syntax highlighting for .env files
     "dsznajder.es7-react-js-snippets", // Generate boilerplate code for React
