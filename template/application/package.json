@@ -12,9 +12,11 @@
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.1",
+    "@thirdweb-dev/auth": "^3.0.21",
     "@thirdweb-dev/chains": "^0.1.15",
     "@thirdweb-dev/react": "^3",
     "@thirdweb-dev/sdk": "^3",
+    "@thirdweb-dev/wallets": "^0.2.22",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "ethers": "^5",

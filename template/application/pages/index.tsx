@@ -3,11 +3,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/button";
 import WalletConnection from "@/components/demo/WalletConnection";
+import UserAuthentication from "@/components/demo/UserAuthentication";
 
 const tabs = [
   { name: "Wallet Connection", component: <WalletConnection /> },
   { name: "Contract Interaction", component: null },
-  { name: "User Authentication", component: null },
+  { name: "User Authentication", component: <UserAuthentication /> },
   { name: "Decentralized Storage", component: null },
   { name: "Realtime Events", component: null },
 ];

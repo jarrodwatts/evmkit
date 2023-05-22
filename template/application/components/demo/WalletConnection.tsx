@@ -39,11 +39,11 @@ export default function WalletConnection({}: Props) {
   ]);
 
   return (
-    <div className="mb-4 flex flex-col items-start mt-4 flex-wrap">
+    <div className="mb-4 flex flex-col items-start flex-wrap">
       <p className="text-sm text-muted-foreground">
-        Select connection options:
+        1. Select connection options:
       </p>
-      <div className="flex flex-row items-center gap-4 pt-2 pb-4 w-full  mb-4">
+      <div className="flex flex-row items-center gap-4 pt-4 pb-4 w-full  mb-4">
         {Object.keys(options).map((option) => (
           <div key={option} className="flex gap-x-2 items-center ">
             <Checkbox
@@ -69,7 +69,7 @@ export default function WalletConnection({}: Props) {
         ))}
       </div>
 
-      <p className="text-sm text-muted-foreground pb-2">View the result:</p>
+      <p className="text-sm text-muted-foreground pb-2">2. View the result:</p>
 
       <ThirdwebProvider
         supportedWallets={
