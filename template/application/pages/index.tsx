@@ -1,16 +1,18 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import Link from "next/link";
 import { buttonVariants } from "@/components/button";
+import Link from "next/link";
 import WalletConnection from "@/components/demo/WalletConnection";
 import UserAuthentication from "@/components/demo/UserAuthentication";
+import DecentralizedStorage from "@/components/demo/DecentralizedStorage";
+import RealtimeEvents from "@/components/demo/RealtimeEvents";
 
 const tabs = [
   { name: "Wallet Connection", component: <WalletConnection /> },
   { name: "Contract Interaction", component: null },
   { name: "User Authentication", component: <UserAuthentication /> },
-  { name: "Decentralized Storage", component: null },
-  { name: "Realtime Events", component: null },
+  { name: "Decentralized Storage", component: <DecentralizedStorage /> },
+  { name: "Realtime Events", component: <RealtimeEvents /> },
 ];
 
 const Home: NextPage = () => {
@@ -44,12 +46,10 @@ const Home: NextPage = () => {
       <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors mt-8">
         What&rsquo;s Included?
       </h2>
-      <p className="leading-7 mt-2">
-        Explore the available features of EVM Kit below.
-      </p>
+      <p className="leading-7 mt-2">Explore the features of EVM Kit below.</p>
 
-      <div className="flex flex-row pt-6 ">
-        <div className="mb-4 flex flex-col items-start mt-4 flex-wrap w-60">
+      <div className="flex flex-col pt-6 lg:flex-row">
+        <div className="mb-4 flex flex-row items-start mt-4 flex-nowrap overflow-x-scroll w-full lg:w-60 lg:flex-col lg:flex-wrap">
           {tabs.map((tab) => (
             <button
               className={`text-left pl-3  py-2 flex items-center pr-6 font-medium transition-colors duration-200 ${
@@ -65,7 +65,10 @@ const Home: NextPage = () => {
           ))}
         </div>
 
-        <div className="border border-gray-700 rounded-lg flex-1 p-8 m-l-3">
+        <div
+          className="border border-gray-700 rounded-lg flex-1 p-8 m-l-3 mt-4 lg:mt-0
+          h-96 overflow-y-auto"
+        >
           {activeTab.component}
         </div>
       </div>

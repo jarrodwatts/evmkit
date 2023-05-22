@@ -43,7 +43,7 @@ export default function WalletConnection({}: Props) {
       <p className="text-sm text-muted-foreground">
         1. Select connection options:
       </p>
-      <div className="flex flex-row items-center gap-4 pt-4 pb-4 w-full  mb-4">
+      <div className="flex flex-row items-center gap-4 pt-4 pb-4 w-full mb-4 flex-wrap">
         {Object.keys(options).map((option) => (
           <div key={option} className="flex gap-x-2 items-center ">
             <Checkbox
