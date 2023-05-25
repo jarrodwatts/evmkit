@@ -1,12 +1,7 @@
 import Head from "next/head";
 import type { AppProps } from "next/app";
-import { ThirdwebProvider } from "@thirdweb-dev/react";
-import { BLOCKCHAIN_ID } from "../const/contractAddresses";
 import { Nav } from "../components/Nav/Nav";
-import "../styles/globals.css";
-
-// This is the chainId your dApp will work on.
-const activeChainId = BLOCKCHAIN_ID;
+import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -21,17 +16,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ThirdwebProvider
-        desiredChainId={activeChainId}
-        // TODO: Setup gasless
-        authConfig={{
-          domain: "example.com",
-          authUrl: "/api/auth",
-        }}
-      >
-        <Nav />
-        <Component {...pageProps} />
-      </ThirdwebProvider>
+      <Nav />
+      <Component {...pageProps} />
     </>
   );
 }

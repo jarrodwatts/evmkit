@@ -52,7 +52,7 @@ const Home: NextPage = () => {
               </h1>
               <p className={styles.heroSubtitle}>
                 EVM Kit is the best way to build full-stack, type-safe web3
-                applications on any EVM-compatible network.
+                applications on any EVM-compatible chain.
               </p>
               <button className={styles.codeButton} onClick={copyToClipboard}>
                 <p>npx evmkit create my-evmkit-app</p>
@@ -69,17 +69,17 @@ const Home: NextPage = () => {
                 {/* Button in the style of code */}
                 <Link
                   className={styles.heroCta}
-                  href="https://docs.evmkit.com/"
+                  href="https://demo.evmkit.com/"
                   target="_blank"
                 >
-                  View Documentation
+                  View Demo
                 </Link>
                 <Link
                   className={styles.secondaryCta}
-                  href="https://github.com/jarrodwatts/evmkit"
+                  href="https://docs.evmkit.com/"
                   target="_blank"
                 >
-                  GitHub
+                  Documentation
                 </Link>
               </div>
             </div>
@@ -88,12 +88,15 @@ const Home: NextPage = () => {
 
         <div className={styles.carouselSection}>
           <h2 className={styles.sectionTitle}>
-            Compatible with all EVM Networks
+            Compatible with{" "}
+            <em>
+              <u>all</u>
+            </em>{" "}
+            EVM Chains
           </h2>
           <p className={styles.sectionDescription}>
             Deploy your smart contracts to any EVM-compatible network with a
             single command. <b>No private keys required</b>.{" "}
-            <em>Literally, just type 11 characters...</em>
           </p>
           <div className={styles.slider}>
             <div className={styles.slideTrack}>
@@ -134,74 +137,117 @@ const Home: NextPage = () => {
             <p className={styles.sectionDescription}>
               EVM Kit uses TypeScript across the stack to provide a seamless
               developer experience. It infers types from your smart contract
-              ABIs to provide typesafety, powered by
+              ABIs using
               <Link
                 href="https://github.com/wagmi-dev/abitype"
                 target="_blank"
                 className={styles.link}
               >
-                ABIType
+                ABIType.
               </Link>
-              . <em>Pretty cool right?</em>
             </p>
             <p className={styles.sectionDescription}>
-              From the smart contract environment to the frontend, you can be
-              confident that your code is <s>poggers</s>,{" "}
-              <em>ahem, typesafe</em>.
+              From smart contracts to the frontend, your IDE will help guide you
+              through the entire development process.
             </p>
           </div>
           <div className={styles.sectionRight}>
             <Image
-              src="/deploy-local-preview.gif"
-              width={720}
+              src="/generate-preview.gif"
+              width={820}
               height={246}
-              alt="deploy local preview gif"
+              alt="yarn generate preview gif"
               className={styles.sectionImage}
             />
             <p className={styles.imageCaption}>
-              <span className={styles.code}>yarn deploy-local</span>{" "}
-              automatically adds your ABIs to your frontend config.
+              Demo: <span className={styles.code}>yarn generate</span> provides
+              type-safety when interacting with your smart contracts.
             </p>
           </div>
         </div>
 
-        <div className={styles.carouselSection}>
-          <h2 className={styles.sectionTitle}>The best tools in web3</h2>
-          <p className={styles.sectionDescription}>
-            Start with the foundation.
-          </p>
-
-          <div className={styles.toolImageContainer}>
-            {["solidity", "hardhat", "openzeppelin", "thirdweb", "nextjs"].map(
-              (tool) => {
-                return (
-                  <Image
-                    src={`/tools/${tool}.png`}
-                    height={tool === "thirdweb" ? 64 : 96}
-                    width={96}
-                    alt={tool}
-                    key={tool}
-                    className={styles.toolImage}
-                  />
-                );
-              }
-            )}
+        <div
+          className={`${styles.section} ${styles.reverse}`}
+          style={{ justifyContent: "center", alignItems: "center", gap: 32 }}
+        >
+          <div className={styles.sectionRight}>
+            <h2 className={styles.sectionTitle}>Batteries Included</h2>
+            <p className={styles.sectionDescription}>
+              Web3 infrastructure is provided out of the box:
+            </p>
+            <ul className={styles.featureList}>
+              <li className={`${styles.sectionDescription} ${styles.listItem}`}>
+                RPC endpoints for all supported chains
+              </li>
+              <li className={`${styles.sectionDescription} ${styles.listItem}`}>
+                IPFS upload, pinning and gateway services
+              </li>
+              <li className={`${styles.sectionDescription} ${styles.listItem}`}>
+                Account abstraction bundlers and paymasters
+              </li>
+            </ul>
           </div>
+          <div className={styles.sectionLeft}>
+            <Image
+              src="/hero-image.webp"
+              width={420}
+              height={320}
+              alt="yarn generate preview gif"
+              className={styles.sectionImage}
+              style={{
+                // flip
+                transform: "scaleX(-1)",
+              }}
+            />
+          </div>
+        </div>
 
+        <div className={styles.carouselSection}>
+          <h2 className={styles.sectionTitle}>Modern Frontend Tooling</h2>
           <p className={styles.sectionDescription}>
-            Add what you need, when you need it.
+            Built for performance and developer experience.
           </p>
-          <div className={styles.toolImageContainer}>
-            {["wagmi", "rainbowkit", "alchemy", "tailwind"].map((tool) => (
-              <Image
-                src={`/tools/${tool}.png`}
-                height={96}
-                width={tool === "wagmi" ? 136 : 96}
-                alt={tool}
-                key={tool}
-                className={styles.toolImage}
-              />
-            ))}
+
+          <div className={styles.toolsContainer}>
+            {[
+              {
+                name: "Next.js",
+                description: "A modern full-stack framework for React ",
+                image: "tools/nextjs.png",
+              },
+              {
+                name: "shadcdn/ui & Tailwind CSS",
+                description:
+                  "Beautifully designed accessible tailwind components",
+                image: "tools/tailwind.png",
+              },
+              {
+                name: "thirdweb",
+                description: "A performant web3 development framework",
+                image: "tools/thirdweb.png",
+              },
+            ].map((tool) => {
+              return (
+                <div className={styles.toolContainer} key={tool.name}>
+                  <Image
+                    src={`/${tool.image}`}
+                    width={96}
+                    height={tool.name === "thirdweb" ? 64 : 96}
+                    alt={tool.name}
+                    className={styles.toolImage}
+                    style={
+                      tool.name === "thirdweb"
+                        ? {
+                            marginBottom: 24,
+                          }
+                        : {}
+                    }
+                  />
+                  <h3 className={styles.toolName}>{tool.name}</h3>
+                  <p className={styles.toolDescription}>{tool.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
 
