@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export"
+    "export": "next export",
+    "generate": "npx thirdweb@latest generate",
+    "postinstall": "export THIRDWEB_CLI_SKIP_INTRO=true && npx thirdweb generate --skip-update-check"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.0.3",

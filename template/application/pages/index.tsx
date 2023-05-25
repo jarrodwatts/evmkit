@@ -5,14 +5,13 @@ import Link from "next/link";
 import WalletConnection from "@/components/demo/WalletConnection";
 import UserAuthentication from "@/components/demo/UserAuthentication";
 import DecentralizedStorage from "@/components/demo/DecentralizedStorage";
-import RealtimeEvents from "@/components/demo/RealtimeEvents";
+import ContractInteraction from "@/components/demo/ContractInteraction";
 
 const tabs = [
   { name: "Wallet Connection", component: <WalletConnection /> },
-  { name: "Contract Interaction", component: null },
+  { name: "Contract Interaction", component: <ContractInteraction /> },
   { name: "User Authentication", component: <UserAuthentication /> },
   { name: "Decentralized Storage", component: <DecentralizedStorage /> },
-  { name: "Realtime Events", component: <RealtimeEvents /> },
 ];
 
 const Home: NextPage = () => {
@@ -26,7 +25,7 @@ const Home: NextPage = () => {
       <p className="text-xl text-muted-foreground">
         A collection of tools for Ethereum Virtual Machine (EVM) development.
       </p>
-      <div className="flex flex-row items-center gap-4 pt-6 pb-16 border-b">
+      <div className="flex flex-row items-center gap-4 pt-6 pb-16 ">
         <Link
           className={buttonVariants({ variant: "default" })}
           href="https://docs.evmkit.com"
@@ -43,28 +42,32 @@ const Home: NextPage = () => {
           GitHub
         </Link>
       </div>
-      <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors mt-8">
-        What&rsquo;s Included?
-      </h2>
-      <p className="leading-7 mt-2">Explore the features of EVM Kit below.</p>
 
-      <div className="flex flex-col pt-6 lg:flex-row">
-        <div className="mb-4 flex flex-row items-start mt-4 flex-nowrap overflow-x-scroll w-full lg:w-60 lg:flex-col lg:flex-wrap">
-          {tabs.map((tab) => (
-            <button
-              className={`text-left pl-3  py-2 flex items-center pr-6 font-medium transition-colors duration-200 ${
-                tab.name === activeTab.name
-                  ? "font-bold text-white border-l-2 border-blue-500"
-                  : "text-gray-400 border-l-2 border-gray-700"
-              } hover:text-white`}
-              key={tab.name}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab.name}
-            </button>
-          ))}
+      <div className="flex flex-col  md:flex-row w-full">
+        <div className="flex flex-col items-start justify-start w-full md:w-96 pr-8">
+          <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors mt-2">
+            What&rsquo;s Included?
+          </h2>
+          <p className="leading-7 mt-2">
+            Explore the features of EVM Kit below.
+          </p>
+
+          <div className="mb-4 flex flex-col w-full flex-wrap items-start mt-4 flex-nowrap overflow-x-scroll w-full md:w-60  ">
+            {tabs.map((tab) => (
+              <button
+                className={`w-full text-left pl-3 py-2 flex items-center pr-6 border-l-2 font-medium transition-colors duration-200 ${
+                  tab.name === activeTab.name
+                    ? "font-bold text-white lg:border-l-2 border-blue-500"
+                    : "text-gray-400 border-gray-700"
+                } hover:text-white`}
+                key={tab.name}
+                onClick={() => setActiveTab(tab)}
+              >
+                {tab.name}
+              </button>
+            ))}
+          </div>
         </div>
-
         <div
           className="border border-gray-700 rounded-lg flex-1 p-8 m-l-3 mt-4 lg:mt-0
           h-96 overflow-y-auto"
