@@ -1,10 +1,3 @@
-# EVM Kit Documentation
+# EVM Kit Docs
 
-Documentation for [EVM Kit](https://github.com/jarrodwatts/evmkit) built using
-[Nextra](https://nextra.site).
-
-## Local Development
-
-First, run `pnpm i` to install the dependencies.
-
-Then, run `pnpm dev` to start the development server and visit [localhost:3000](http://localhost:3000).
+Forked from [Polybase Docs](https://github.com/polybase/docs), built with [Mintlify](https://mintlify.com/)
