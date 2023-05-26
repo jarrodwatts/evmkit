@@ -216,7 +216,7 @@ const Home: NextPage = () => {
                 image: "tools/nextjs.png",
               },
               {
-                name: "shadcdn/ui & Tailwind CSS",
+                name: "shadcn/ui & Tailwind CSS",
                 description:
                   "Beautifully designed accessible tailwind components",
                 image: "tools/tailwind.png",
