@@ -254,8 +254,8 @@ const Home: NextPage = () => {
         <div className={styles.carouselSection}>
           <h2 className={styles.sectionTitle}>Join the Community</h2>
           <p className={styles.sectionDescription}>
-            You&rsquo; are not alone in this journey. Join the community to get
-            help, share your projects, and meet other developers.
+            You are not alone in this journey. Join the community to get help,
+            share your projects, and meet other developers.
           </p>
           <div className={styles.communityContainer}>
             <Link
