@@ -9,6 +9,7 @@
     "lint": "next lint",
     "export": "next export",
     "generate": "npx thirdweb@latest generate",
+    "add-component": "npx shadcn-ui add",
     "postinstall": "export THIRDWEB_CLI_SKIP_INTRO=true && npx thirdweb generate --skip-update-check"
   },
   "dependencies": {
