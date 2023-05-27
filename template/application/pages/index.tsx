@@ -52,7 +52,7 @@ const Home: NextPage = () => {
             Explore the features of EVM Kit below.
           </p>
 
-          <div className="mb-4 flex flex-col w-full flex-wrap items-start mt-4 flex-nowrap overflow-x-scroll w-full md:w-60  ">
+          <div className="mb-4 flex flex-col w-full flex-wrap items-start mt-4 flex-nowrap overflow-x-auto w-full md:w-60  ">
             {tabs.map((tab) => (
               <button
                 className={`w-full text-left pl-3 py-2 flex items-center pr-6 border-l-2 font-medium transition-colors duration-200 ${
