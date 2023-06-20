@@ -18,7 +18,7 @@
 
 ## What is EVM Kit?
 
-EVM Kit is a web3 development stack made by [Jarrod](https://twitter.com/jarrodwattsdev), designed to create full-stack web3 applications on EVM-compatible chains.
+EVM Kit is a web3 development stack made by [Jarrod](https://twitter.com/jarrodwattsdev) and powered by [thirdweb](https://thirdweb.com/), designed to create full-stack web3 applications on EVM-compatible chains.
 
 It uses [TypeScript](https://www.typescriptlang.org/) across the board, and is separated into two parts:
 

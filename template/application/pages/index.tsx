@@ -20,7 +20,14 @@ const Home: NextPage = () => {
   return (
     <div className="w-full mx-auto pr-8 pl-8 max-w-7xl relative pb-10 mt-32">
       <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
-        EVM Kit
+        EVM Kit{" "}
+        <span
+          className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-4
+        text-gray-400
+        "
+        >
+          powered by thirdweb
+        </span>
       </h1>
       <p className="text-xl text-muted-foreground">
         A collection of tools for Ethereum Virtual Machine (EVM) development.
