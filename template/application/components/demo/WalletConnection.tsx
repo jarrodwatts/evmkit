@@ -20,7 +20,6 @@ const options = {
   "Smart Wallets (ERC4337)": [
     smartWallet({
       gasless: true,
-      thirdwebApiKey: process.env.NEXT_PUBLIC_THIRDWEB_API_KEY as string,
       factoryAddress: process.env
         .NEXT_PUBLIC_THIRDWEB_FACTORY_ADDRESS as string,
     }),
