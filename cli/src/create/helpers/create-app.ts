@@ -70,12 +70,6 @@ export async function createApp({
     );
   }
 
-  console.log("Installing packages. This might take a couple of minutes.");
-  console.log();
-
-  await install(root, null, { packageManager, isOnline });
-  console.log();
-
   if (tryGitInit(root)) {
     console.log("Initialized a git repository.");
     console.log();
