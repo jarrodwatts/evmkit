@@ -1,18 +1,10 @@
 import { promisify } from "util";
 import { exec } from "child_process";
 import { readFileSync, writeFileSync } from "fs";
+import { config } from "dotenv";
+config();
 
 const execPromise = promisify(exec);
-
-// Load environment variables from .env.local file
-const envFileContent = readFileSync("./.env.local", "utf8");
-const envVars = {};
-envFileContent.split("\n").forEach((line) => {
-  const [key, value] = line.trim().split("=");
-  if (key && value) {
-    envVars[key] = value;
-  }
-});
 
 const packageJsonPath = "./package.json";
 let packageJsonOriginalContents;
@@ -24,7 +16,7 @@ async function runThirdwebGenerate() {
     packageJsonOriginalContents = JSON.parse(originalPackageJsonContent);
 
     console.log("Running thirdweb generate...");
-    const cmd = `npx --yes thirdweb@latest generate --key "${envVars.THIRDWEB_SECRET_KEY}"`;
+    const cmd = `npx --yes thirdweb@latest generate --key "${process.env.THIRDWEB_SECRET_KEY}"`;
     const { stdout, stderr } = await execPromise(cmd);
 
     if (stdout) {
