@@ -10,9 +10,7 @@ import {
   walletConnect,
 } from "@thirdweb-dev/react";
 import React, { useState } from "react";
-import { Checkbox } from "../checkbox";
-
-type Props = {};
+import { Checkbox } from "@/components/ui/checkbox";
 
 const options = {
   "Browser Wallets": [metamaskWallet(), coinbaseWallet(), walletConnect()],
@@ -20,7 +18,6 @@ const options = {
   "Smart Wallets (ERC4337)": [
     smartWallet({
       gasless: true,
-      thirdwebApiKey: process.env.NEXT_PUBLIC_THIRDWEB_API_KEY as string,
       factoryAddress: process.env
         .NEXT_PUBLIC_THIRDWEB_FACTORY_ADDRESS as string,
     }),
@@ -33,7 +30,7 @@ const options = {
   ],
 };
 
-export default function WalletConnection({}: Props) {
+export default function WalletConnection() {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([
     "Browser Wallets",
   ]);

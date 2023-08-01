@@ -1,5 +1,5 @@
 import { ConnectWallet } from "@thirdweb-dev/react";
-import { Button } from "../button";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function UserAuthentication() {

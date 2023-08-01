@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import { buttonVariants } from "@/components/button";
+import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import WalletConnection from "@/components/demo/WalletConnection";
 import UserAuthentication from "@/components/demo/UserAuthentication";
@@ -15,7 +15,7 @@ const tabs = [
 ];
 
 const Home: NextPage = () => {
-  const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>(tabs[0]);
+  const [activeTab, setActiveTab] = useState<typeof tabs[number]>(tabs[0]);
 
   return (
     <div className="w-full mx-auto pr-8 pl-8 max-w-7xl relative pb-10 mt-32">
@@ -59,7 +59,7 @@ const Home: NextPage = () => {
             Explore the features of EVM Kit below.
           </p>
 
-          <div className="mb-4 flex flex-col w-full flex-wrap items-start mt-4 flex-nowrap overflow-x-auto w-full md:w-60  ">
+          <div className="mb-4 flex flex-col items-start mt-4 flex-nowrap overflow-x-auto w-full md:w-60  ">
             {tabs.map((tab) => (
               <button
                 className={`w-full text-left pl-3 py-2 flex items-center pr-6 border-l-2 font-medium transition-colors duration-200 ${
