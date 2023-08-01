@@ -10,9 +10,7 @@ import {
   walletConnect,
 } from "@thirdweb-dev/react";
 import React, { useState } from "react";
-import { Checkbox } from "../checkbox";
-
-type Props = {};
+import { Checkbox } from "@/components/ui/checkbox";
 
 const options = {
   "Browser Wallets": [metamaskWallet(), coinbaseWallet(), walletConnect()],
@@ -32,7 +30,7 @@ const options = {
   ],
 };
 
-export default function WalletConnection({}: Props) {
+export default function WalletConnection() {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([
     "Browser Wallets",
   ]);

@@ -7,8 +7,7 @@
     "test": "npx hardhat test",
     "build": "npx thirdweb@latest build",
     "run-node": "npx hardhat node",
-    "deploy": "npx thirdweb@latest deploy",
-    "generate": "npx thirdweb@latest generate ../application"
+    "deploy": "npx thirdweb@latest deploy"
   },
   "dependencies": {
     "@thirdweb-dev/contracts": "^3"

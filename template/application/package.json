@@ -10,12 +10,12 @@
     "lint": "next lint",
     "export": "next export",
     "generate": "npx thirdweb@latest generate",
-    "add-component": "npx shadcn-ui@latest add --path ./components",
-    "postinstall": "cross-env THIRDWEB_CLI_SKIP_INTRO=true npx thirdweb generate --skip-update-check"
+    "add-component": "npx --yes shadcn-ui@latest add",
+    "postinstall": "node postinstall.mjs"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "1.0.3",
-    "@radix-ui/react-slot": "1.0.1",
+    "@radix-ui/react-slot": "^1.0.2",
     "@thirdweb-dev/auth": "3.0.21",
     "@thirdweb-dev/chains": "0.1.15",
     "@thirdweb-dev/react": "^3",
@@ -35,6 +35,7 @@
     "@types/node": "^18.11.11",
     "@types/react": "^18",
     "autoprefixer": "^10.4.14",
+    "env-cmd": "^10.1.0",
     "eslint": "^8.29.0",
     "eslint-config-next": "^13",
     "postcss": "^8.4.23",
