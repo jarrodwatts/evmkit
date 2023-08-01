@@ -52,6 +52,11 @@ thirdweb provides the infrastructure such as the paymaster and bundler for you t
 
 Note: this is not available on mainnet environments at this time. [See supported chains](https://portal.thirdweb.com/wallet/smart-wallet#supported-chains).
 
+To add support for account abstraction in your EVM Kit project:
+
+1. Deploy an [AccountFactory](https://thirdweb.com/thirdweb.eth/AccountFactory) smart contract to your desired chain.
+2. In your `.env` file, set the `NEXT_PUBLIC_WALLET_FACTORY` variable to your deployed Account Factory smart contract address.
+
 View [Jarrod's full guide on setting up account abstraction](https://blog.jarrodwatts.com/i-fixed-web3-onboarding).
 
 ### Email / Phone Number Wallets
