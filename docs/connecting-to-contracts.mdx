@@ -1,0 +1,149 @@
+---
+title: "Connecting to Contracts"
+---
+
+Now you've deployed your smart contracts (or plan on using existing ones), you're ready to
+connect to them in your application.
+
+The `/application` directory contains a `/const` directory, which has two files:
+
+1. `chains.ts`: Define the testnet and mainnet chains your smart contracts are deployed to.
+2. `contracts.ts`: Define the addresses of your smart contracts on each chain.
+
+Configure these files to connect to your smart contracts.
+
+## Configuring Chains
+
+The application assumes you have two separate environments. One for testing purposes and one for production. You can choose to use
+separate chains for each environment, or simply use the same chain for both.
+
+All you need to do is configure the `DEVELOPMENT_CHAIN` and `PRODUCTION_CHAIN` variables to your chosen chains, and you're good to go.
+
+By default, the application uses the Polygon `Mumbai` test network for testing and the Polygon `Mainnet` network for production:
+
+```ts Example: Use Mumbai for testing and Polygon for production
+import { Polygon, Mumbai } from "@thirdweb-dev/chains";
+
+export const IS_DEV_ENV = process.env.NODE_ENV === "development";
+
+const DEVELOPMENT_CHAIN = Mumbai; // e.g. Mumbai used for local development
+const PRODUCTION_CHAIN = Polygon; // e.g. Polygon used for production
+
+export const CHAIN = IS_DEV_ENV ? DEVELOPMENT_CHAIN : PRODUCTION_CHAIN;
+```
+
+The `IS_DEV_ENV` detects whether you're running the application in a development environment or not.
+The `CHAIN` variable uses that value to return your chosen development chain in development and your chosen production chain in production.
+
+## Configuring Contract Addresses
+
+The `contracts.ts` file is where you put the addresses of your smart contracts.
+
+For each smart contract you want to connect to, you can follow the same pattern below:
+
+1. Define a variable containing the testnet address of your smart contract.
+2. Define a variable containing the mainnet address of your smart contract.
+3. Export a variable that returns the testnet address in development and the mainnet address in production _(and cast it
+   as the test network address's type)_.
+
+```ts
+const greeter_dev = "0x2E74A1664dA1066FFa4aF8b85856cb474D189029"; // e.g. Mumbai
+const greeter_prod = "0x123456789123456789123456789123456789123"; // e.g. Polygon
+
+// Export this to use as the address of your smart contract throughout the app.
+export const greeter = IS_DEV_ENV
+  ? greeter_dev // Will be the test network address in development
+  : (greeter_prod as typeof greeter_dev); // and main network address in production
+```
+
+No smart contract ABI is required when using the thirdweb React SDK; it is either fetched at run-time or pulled from the
+[generation](#generating-contract-types) process.
+
+## Generating Contract Types
+
+Since we don't copy smart contract ABIs into the application; our IDE doesn't know what functions, views, events, etc. are available on each smart contract. Without this,
+we don&rsquo;t get any help from our IDE when interacting with smart contracts.
+
+The thirdweb CLI comes with a [generate](https://portal.thirdweb.com/cli/generate) command, which detects all smart contract addresses in the project
+and fetches their ABIs, pulling them into node_modules to enable type-safety on smart contract interactions like
+[useContractRead](https://portal.thirdweb.com/react/react.usecontractread) and [useContractWrite](https://portal.thirdweb.com/react/react.usecontractwrite).
+
+<Tip>
+  If you prefer, you *can* just provide the contract ABIs as the second argument
+  to
+  [useContract](https://portal.thirdweb.com/react/react.usecontract#contract-abi-optional)
+  to achieve the same effect of type-safety and performance gains.
+</Tip>
+
+To get this type-safety, run `yarn generate` from the application directory. This will create a `thirdweb.json` file at the root of your app;
+which you can modify and re-run `yarn generate` to pull in new ABIs, or update existing ones.
+
+```bash
+yarn generate
+```
+
+For example, running `yarn generate` with the below configuration inside `thirdweb.json` will pull in the ABI for the
+`0x2E7` smart contract on the Polygon `Mumbai` test network:
+
+```ts thirdweb.json
+{
+  "chainIds": [
+    80001
+  ],
+  "contracts": [
+    {
+      "address": "0x2E74A1664dA1066FFa4aF8b85856cb474D189029",
+      "chainId": 80001
+    }
+  ]
+}
+```
+
+After running `generate`, smart contract interactions become type-safe as the ABIs are now available to the IDE.
+It also provides a performance increase as the function
+doesn't need to fetch the ABI at run-time.
+
+<Tip>
+  Sometimes, you might need to [restart the TypeScript
+  server](https://stackoverflow.com/questions/64454845/where-is-vscodes-restart-ts-server)
+  for the IDE to pick up the new types.
+</Tip>
+
+ABIs can be found in the `/node_modules/@thirdweb-dev/generated-abis/dist` directory.
+
+## Contract Interactions
+
+Now you have set up your chains, contract addresses, and generated your contract types, you can start interacting with your smart contracts.
+
+The application comes with an example [ContractInteraction](https://github.com/jarrodwatts/evmkit/blob/main/template/application/components/demo/ContractInteraction.tsx)
+component to showcase the [useContract](https://portal.thirdweb.com/react/react.usecontract), [useContractRead](https://portal.thirdweb.com/react/react.usecontractread) and [useContractWrite](https://portal.thirdweb.com/react/react.usecontractwrite) hooks
+from thirdweb's React SDK.
+
+For smart contracts that follow EIP standards, there is a range of other hooks such as [useNFT](https://portal.thirdweb.com/react/react.usenft)
+documented in [thirdweb's React SDK](https://portal.thirdweb.com/react).
+
+<Tip>
+thirdweb's hooks are powered by [TanStack Query](https://tanstack.com/query/latest/docs/react/overview).
+
+Read my blog post on [TanStack
+Query](https://blog.jarrodwatts.com/level-up-your-full-stack-development-with-react-query)
+for a quick introduction.
+
+</Tip>
+
+### Reading Data
+
+For generic smart contract reads, you can use the [useContractRead](https://portal.thirdweb.com/react/react.usecontractread) hook.
+
+```jsx
+const { data, isLoading, error } = useContractRead(contract, "functionName");
+```
+
+### Writing Data
+
+For initiating transactions, you can use the [useContractWrite](https://portal.thirdweb.com/react/react.usecontractwrite) hook,
+and the [Web3Button](https://portal.thirdweb.com/react/react.web3button) to ensure the user has a connected wallet and is on the correct chain.
+
+```jsx
+const { mutateAsync, isLoading } = useContractWrite(contract, "functionName");
+```

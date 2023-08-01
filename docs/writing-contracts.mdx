@@ -1,0 +1,26 @@
+---
+title: "Writing Smart Contracts"
+---
+
+Smart contracts are located in the `/contracts` folder.
+The template comes with a barebones `Greeter` smart contract, written in Solidity.
+
+The general flow you'll follow when writing smart contracts is:
+
+1. `yarn build`: Compile your smart contracts with Hardhat.
+2. `yarn test`: Run your smart contract tests with Hardhat.
+3. `yarn deploy`: [Deploy](/deploying-contracts) your smart contracts to any EVM chain from the browser.
+
+## OpenZeppelin & thirdweb Solidity SDK
+
+[thirdweb's Solidity SDK](https://portal.thirdweb.com/solidity) comes pre-installed for you to use and inherit from.
+
+This includes the logic for the most common patterns and standards in the EVM ecosystem; including
+[ERC20](https://portal.thirdweb.com/solidity/base-contracts/erc20base),
+[ERC721](https://portal.thirdweb.com/solidity/base-contracts/erc721base),
+[ERC1155](https://portal.thirdweb.com/solidity/base-contracts/erc1155base),
+[staking](https://portal.thirdweb.com/solidity/base-contracts/staking/staking721base),
+[permissions](https://portal.thirdweb.com/solidity/extensions/permissionsenumerable), and more.
+
+[Open Zeppelin contracts](https://www.openzeppelin.com/contracts) is a dependency of thirdweb's Solidity SDK, so a number of the Open Zeppelin contracts are also available for you to use via
+the thirdweb Solidity SDK; although you can install Open Zeppelin contracts directly if you prefer.

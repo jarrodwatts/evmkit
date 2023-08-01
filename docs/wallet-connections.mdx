@@ -1,0 +1,91 @@
+---
+title: "Connecting to Wallets"
+---
+
+EVM Kit uses thirdweb's [Wallet SDK](https://portal.thirdweb.com/wallet) to enable users to connect their wallets
+and interact with smart contracts. It powers all kinds of onboarding flows for users, including browser wallets,
+[ERC-4337](https://blog.jarrodwatts.com/what-is-account-abstraction-and-how-does-eip-4337-work) account abstraction, email login, and more.
+
+The application is wrapped in the [ThirdwebProvider](https://portal.thirdweb.com/react/react.thirdwebprovider) component; which is where you define
+which wallet connection options you want to support. You can see this in the [\_app.tsx](https://github.com/jarrodwatts/evmkit/blob/main/template/application/pages/_app.tsx)
+file.
+
+```jsx pages/_app.tsx
+<ThirdwebProvider
+  // Provide an array of supported wallets to this prop.
+  supportedWallets={[metamaskWallet()]}
+>
+  <YourApp />
+</ThirdwebProvider>
+```
+
+The app comes with a [WalletConnection](https://github.com/jarrodwatts/evmkit/blob/main/template/application/components/demo/WalletConnection.tsx)
+component to demonstrate how the [ConnectWallet](https://portal.thirdweb.com/react/react.connectwallet) component behaves with various options enabled.
+
+## Configuring Wallet Connection Options
+
+Inside the `pages/_app.tsx` file, configure the [supportedWallets](https://portal.thirdweb.com/react/react.thirdwebprovider#supportedwallets-optional)
+option of the `ThirdwebProvider` context provider component. This is an array of wallet connection options that will be presented to the user when you
+render the [ConnectWallet](https://portal.thirdweb.com/react/react.connectwallet) component.
+
+By default, no `supportedWallets` prop is defined, which defaults to support [browser wallets](#browser-wallets) only. More information on available options is listed below.
+
+### Browser Wallets
+
+Use the thirdweb documentation to add browser wallets to the `supportedWallets` array:
+
+- [MetaMask](https://portal.thirdweb.com/react/react.coinbasewallet#usage-with-connectwallet)
+- [Coinbase Wallet](https://portal.thirdweb.com/react/react.coinbasewallet#usage-with-connectwallet)
+- [WalletConnect](https://portal.thirdweb.com/react/react.walletconnect#usage-with-connectwallet) V1 and V2
+
+### Local Wallet (Guest Flow)
+
+Abstract away the wallet connection flow by creating wallets for user's under the hood.
+
+Follow the [Local Wallet Documentation](https://portal.thirdweb.com/react/react.localwallet#usage-with-connectwallet).
+
+### Account Abstraction
+
+Create new smart wallets for user's that follow the EIP-4337 account abstraction standard and interact
+with smart contracts using this new wallet.
+thirdweb provides the infrastructure such as the paymaster and bundler for you to use this feature.
+
+Note: this is not available on mainnet environments at this time. [See supported chains](https://portal.thirdweb.com/wallet/smart-wallet#supported-chains).
+
+View [Jarrod's full guide on setting up account abstraction](https://blog.jarrodwatts.com/i-fixed-web3-onboarding).
+
+### Email / Phone Number Wallets
+
+To create a "web2" onboarding experience with email/phone number, you can use
+[Magic.Link](https://portal.thirdweb.com/react/react.magiclink) or
+[Paper Wallet](https://portal.thirdweb.com/react/react.paperwallet) to create a wallet associated with this email/phone for the user.
+
+#### Magic.Link
+
+Sign up for [Magic Link Auth](https://magic.link/auth) and get an API key.
+
+Inside an `.env` file, add your API key:
+
+```env
+# Magic Link (Email Wallets)
+NEXT_PUBLIC_MAGIC_LINK_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Then, follow the [Magic.Link](https://portal.thirdweb.com/react/react.magiclink) documentation.
+
+#### Paper Wallet
+
+Sign up for [Paper](https://withpaper.com/) and get a client ID.
+
+Inside an `.env` file, add your client ID:
+
+```env
+# Paper Wallet (Email Wallets)
+NEXT_PUBLIC_PAPER_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Then, follow the [Paper Wallet](https://portal.thirdweb.com/react/react.paperwallet) documentation.
+
+### Safe Wallets
+
+View documentation for [Safe Wallets](https://portal.thirdweb.com/react/react.safewallet).

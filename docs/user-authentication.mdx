@@ -1,0 +1,104 @@
+---
+title: "User Authentication (SIWE)"
+---
+
+You may need to know a user's wallet address on the server-side, for use cases such as token-gated
+pages or [signature-based minting](https://portal.thirdweb.com/glossary/signature-based-minting).
+
+Providing the user's wallet address from the client is not secure, as it can be spoofed.
+Instead, the [EIP-4361 Sign in with Ethereum (SIWE)](https://eips.ethereum.org/EIPS/eip-4361) standard can be used to ask the user to
+prove ownership of their wallet address by signing a message, and then verifying the signature on the server-side.
+
+EVM Kit uses [thirdweb Auth](https://portal.thirdweb.com/auth) to provide this SIWE functionality, which uses a 3-step process:
+
+1. Server generates a message for the user to sign _(message follows SIWE standard)_.
+2. User signs the message with their wallet, proving ownership of the wallet address.
+3. Server verifies the signature and the user enters authenticated state.
+
+Since we are using Next.js, the client and server are both in the `/application` directory.
+
+The app comes with a [UserAuthentication](https://github.com/jarrodwatts/evmkit/blob/main/template/application/components/demo/UserAuthentication.tsx)
+component to showcase the SIWE flow and access of restricted server-side data.
+
+## Configuration
+
+Two environment variables can be set in `.env` to configure the SIWE flow:
+
+```bash
+AUTH_PRIVATE_KEY=        # To sign messages with your wallets private key
+NEXT_PUBLIC_AUTH_DOMAIN= # Set this to your website domain to appear in the message.
+```
+
+## Generating Messages
+
+The [Connect Wallet Button](https://portal.thirdweb.com/react/react.connectwallet#auth-optional)
+comes with an `auth` prop, that can be used to showcase a "Sign In" state after the user connects their wallet.
+
+When the user clicks the "Sign In" button, a message is generated and the user is prompted to sign it using their connected wallet.
+
+```jsx
+<ConnectWallet auth={{ loginOptional: false }} />
+```
+
+## Signing Messages
+
+The user signs the message with their wallet, and the signature is sent to the server.
+
+You define the server logic location using the `authConfig` prop on the
+[ThirdwebProvider](https://portal.thirdweb.com/react/react.thirdwebprovider#authconfig-optional).
+You can see this inside the [\_app.tsx](https://github.com/jarrodwatts/evmkit/blob/main/template/application/pages/_app.tsx) file:
+
+```jsx
+<ThirdwebProvider
+  authConfig={{
+    domain: process.env.NEXT_PUBLIC_AUTH_DOMAIN || "evmkit.com", // Your website
+    authUrl: "/api/auth", // API Route (default: pages/api/auth/[...thirdweb].ts)
+  }}
+>
+  <Component {...pageProps} />
+</ThirdwebProvider>
+```
+
+## Verifying Signatures
+
+The signed message arrives at the server, and the server verifies the signature's validity.
+
+The application comes with a `/pages/api/auth/[...thirdweb].ts`
+[catch-all dynamic route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments)
+which handles `/login`, `/logout`, and `/user` requests under the hood.
+
+In this flow, the `/login` route is triggered which verifies the signature and sets a `thirdweb_auth_token` cookie for this user to remain
+authenticated for future requests.
+
+## Accessing Restricted Data
+
+Now the user is authenticated, you can use the [useUser](https://portal.thirdweb.com/react/react.useuser) hook to access their authentication information
+from the client, as well as the [useLogin](https://portal.thirdweb.com/react/react.uselogin) and
+[useLogout](https://portal.thirdweb.com/react/react.uselogout) hooks to manage the user's authentication state.
+
+You can also restrict access to content based on the user's authentication status or their wallet address on the server-side.
+The application showcases this in the [secret.ts](https://github.com/jarrodwatts/evmkit/blob/main/template/application/pages/api/secret.ts) API route:
+
+```jsx
+import { getUser } from "./auth/[...thirdweb]";
+import { NextApiRequest, NextApiResponse } from "next";
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  // Get the user of the request
+  const user = await getUser(req);
+
+  // Check if the user is authenticated
+  if (!user) {
+    return res.status(401).json({
+      message: "No user is signed in.",
+    });
+  }
+
+  // e.g. use the user's authenticated wallet address on server.
+  return res.status(200).json({
+    message: `${user.address}`,
+  });
+};
+
+export default handler;
+```

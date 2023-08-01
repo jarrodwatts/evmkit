@@ -1,0 +1,37 @@
+---
+title: "Decentralized Storage (IPFS)"
+---
+
+EVM Kit includes functionality to easily upload to, and render files from IPFS via a gateway; powered by
+[thirdweb Storage](https://portal.thirdweb.com/storage).
+
+The app comes with a [DecentralizedStorage](https://github.com/jarrodwatts/evmkit/blob/main/template/application/components/demo/DecentralizedStorage.tsx)
+component to showcase how to upload to and render files from IPFS.
+
+## Upload (and pin) Files to IPFS
+
+Use the [useStorageUpload](https://portal.thirdweb.com/react/react.usestorageupload) hook to upload files to IPFS.
+
+```jsx
+import { useStorageUpload } from "@thirdweb-dev/react";
+
+function App() {
+  const { mutateAsync: upload } = useStorageUpload();
+}
+```
+
+## Render Files from IPFS
+
+Use the [MediaRenderer](https://portal.thirdweb.com/react/react.mediarenderer) component to render _any_ type of file from IPFS; including
+images, videos, audio files, 3D models, and more.
+
+```jsx
+import { MediaRenderer } from "@thirdweb-dev/react";
+
+function Home() {
+  return (
+    // Any URL that points to media (IPFS URI, HTTP URL, etc.)
+    <MediaRenderer src="ipfs://QmV4HC9fNrPJQeYpbW55NLLuSBMyzE11zS1L4HmL6Lbk7X" />
+  );
+}
+```

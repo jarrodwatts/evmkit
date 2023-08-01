@@ -1,0 +1,76 @@
+---
+title: "Folder Structure"
+---
+
+A brief explanation of each file in the EVM Kit project.
+
+The project has three root folders:
+
+```
+├── contracts
+├── application
+└── .vscode
+```
+
+## Contracts
+
+Smart contract code.
+
+```bash
+├── contracts          # Directory to store Solidity contracts
+│   └── Greeter.sol    # An example Solidity contract
+├── test               # Directory for test scripts for testing contracts
+│   └── Greeter.ts     # An example test script for the Greeter contract
+├── hardhat.config.ts  # Hardhat configuration file
+├── package.json       # Dependencies and scripts for working with contracts
+├── tsconfig.json      # TypeScript configuration file
+```
+
+## Application
+
+The frontend application.
+
+```bash
+├── components          # Directory for reusable components
+│   ├── Navbar.tsx      # Example hand-made component
+│   └── ui              # Directory for shadcn/ui CLI generated components
+        ├── button.tsx      # Component made by shadcn CLI
+        ├── checkbox.tsx    # Component made by shadcn CLI
+│   └── demo            # Directory for showcasing functionality
+│       ├── ContractInteraction.tsx  # Contract interaction showcase
+│       ├── DecentralizedStorage.tsx # Decentralized storage showcase
+│       ├── UserAuthentication.tsx   # User authentication showcase
+│       └── WalletConnection.tsx     # Wallet connection showcase
+├── const               # Directory for constant values
+│   ├── chains.ts       # Chain constants
+│   └── contracts.ts    # Smart contract address constants
+├── lib                 # Directory for shared utility functions
+│   └── utils.ts        # Utility functions for shadcn/ui
+├── pages               # Directory for Next.js pages
+│   ├── _app.tsx        # Wrapper component around all pages
+│   ├── api             # Server-side API routes
+│   │   ├── auth        # thirdweb auth API container
+│   │   │   └── [...thirdweb].ts # thirdweb Auth catch all API Route
+│   │   └── secret.ts   # Restricted server-side route
+│   └── index.tsx       # Home page
+├── styles              # Container for global css configuration
+│   └── globals.css     # Global css configuration file
+├── components.json     # shadcn/ui component configuration file
+├── postcss.config.js   # Required for Tailwind CSS
+├── postinstall.mjs     # Runs thirdweb generate with your secret key after npm install
+├── tailwind.config.js  # Tailwind CSS configuration file
+├── thirdweb.json       # thirdweb Generate configuration file
+├── tsconfig.json       # TypeScript configuration file
+├── next-env.d.ts       # TypeScript declaration file for Next.js
+├── next.config.js      # Next.js configuration file
+├── package.json        # Dependencies and scripts for working with the application
+```
+
+## .vscode
+
+IDE settings and configuration.
+
+```bash
+├── extensions.json  # Recommended VS Code Extensions
+└── settings.json    # VS Code settings for this project
+```
