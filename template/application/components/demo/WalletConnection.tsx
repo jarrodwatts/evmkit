@@ -13,21 +13,24 @@ import React, { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CHAIN } from "../../const/chains";
 
+const smartWalletConfig = {
+  gasless: true,
+  factoryAddress: process.env.NEXT_PUBLIC_WALLET_FACTORY as string,
+};
+
 const options = {
   "Browser Wallets": [metamaskWallet(), coinbaseWallet(), walletConnect()],
   "Safe Wallets": [safeWallet()],
-  "Smart Wallets (ERC4337)": [
-    smartWallet({
-      gasless: true,
-      factoryAddress: process.env.NEXT_PUBLIC_WALLET_FACTORY as string,
-    }),
-  ],
   "Local Wallets": [localWallet()],
   "Email Wallets": [
     magicLink({
       apiKey: process.env.NEXT_PUBLIC_MAGIC_LINK_API_KEY as string,
     }),
   ],
+
+  // Configure when smart wallets should be created based on the selected wallet.
+  // E.g. Create a smart wallet when the user selects local wallet as EOA:
+  "Smart Wallets (ERC4337)": [smartWallet(localWallet(), smartWalletConfig)],
 };
 
 export default function WalletConnection() {
